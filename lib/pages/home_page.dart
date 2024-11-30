@@ -5,6 +5,7 @@ import 'package:nutrition_app/models/stored_product.dart';
 import 'package:nutrition_app/pages/barcode_page.dart';
 import 'package:nutrition_app/resources/database.dart';
 import 'package:nutrition_app/widgets/history_tile.dart';
+import 'ocr_scan_page.dart'; // Import the new OCR Scan page
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key, required this.title});
@@ -14,51 +15,61 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        endDrawer: _buildDrawer(context),
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: StreamBuilder(
-            stream: DatabaseCommands().getHistory(),
-            builder: ((context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (snapshot.hasError) {
-                return const Center(
-                  child: Text('An error occurred'),
-                );
-              }
-              if (snapshot.hasData) {
-                final List<StoredProduct> storedProducts = snapshot.data!.docs
-                    .map((e) => e.data() as StoredProduct)
-                    .toList();
-                _controller.storedProducts = storedProducts;
-                return ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: storedProducts.length,
-                  itemBuilder: (context, index) {
-                    /*  final storedProducts =
-                        data.docs[index].data() as StoredProduct; */
-                    return HistoryTile(product: storedProducts[index]);
-                  },
-                );
-              }
-              return const Center(
-                child: Text('Search to add products to your history'),
-              );
-            })),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(() => BarcodeScannerPage());
-          },
-          tooltip: 'Scan Barcode',
-          child: const Icon(Icons.barcode_reader),
-        ));
+      endDrawer: _buildDrawer(context),
+      appBar: AppBar(
+        title: Text(title),
+        actions: [
+          // Add the new icon button for OCR scan
+          IconButton(
+            icon: const Icon(Icons.camera_alt),
+            onPressed: () {
+              Get.to(() => OCRScanPage());  // Navigate to OCRScanPage
+            },
+            tooltip: 'Scan Text with OCR',
+          ),
+        ],
+      ),
+      body: StreamBuilder(
+        stream: DatabaseCommands().getHistory(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('An error occurred'),
+            );
+          }
+          if (snapshot.hasData) {
+            final List<StoredProduct> storedProducts = snapshot.data!.docs
+                .map((e) => e.data() as StoredProduct)
+                .toList();
+            _controller.storedProducts = storedProducts;
+            return ListView.builder(
+              padding: const EdgeInsets.all(8),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemCount: storedProducts.length,
+              itemBuilder: (context, index) {
+                return HistoryTile(product: storedProducts[index]);
+              },
+            );
+          }
+          return const Center(
+            child: Text('Search to add products to your history'),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(() => BarcodeScannerPage());
+        },
+        tooltip: 'Scan Barcode',
+        child: const Icon(Icons.barcode_reader),
+      ),
+    );
   }
 
   Widget _buildDrawer(BuildContext context) {
@@ -78,12 +89,6 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               )),
-          // ListTile(
-          //   title: const Text('Info'),
-          //   onTap: () {
-          //     _controller.infoApp();
-          //   },
-          // ),
           ListTile(
             title: const Text('Logout'),
             onTap: () {

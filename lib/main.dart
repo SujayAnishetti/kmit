@@ -14,7 +14,7 @@ import 'package:nutrition_app/pages/login_page.dart';
 void main() async {
   
   WidgetsFlutterBinding.ensureInitialized();
-  Gemini.init(apiKey: 'your_api_key',
+  Gemini.init(apiKey: 'AIzaSyBQQueUHknJUjM61noyWdySykKrmypYX3k',
   );
   if (defaultTargetPlatform == TargetPlatform.android) {
     await FlutterDisplayMode.setHighRefreshRate();

@@ -43,6 +43,10 @@ dependencies:
   intl: ^0.19.0
   mobile_scanner: ^4.0.1
   rename_app: ^1.3.2
+  google_mlkit_text_recognition: 
+  image_picker:
+  shared_preferences:
+
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -85,3 +89,40 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/bg1.jpg
+    - assets/ntla.png
+    - assets/bg1.png
+    - assets/bg2.png
+    - assets/bg2_orignal.png
+    - assets/user_icon.png
+    - assets/research_paper/F1.pdf
+    - assets/research_paper/F2.pdf
+    - assets/blog1.jpeg
+    - assets/blog2.jpeg
+    - assets/blog3.jpeg
+    - assets/blog4.png
+    - assets/blog5.png
+    - assets/Lays.png
+    - assets/Terra Veggie Crisps.png
+    - assets/Grain Free Tortilla.png
+    - assets/Cabo Chips.png
+    - assets/BakeHouse Grains.png
+    - assets/Doritos.png
+    - assets/Foxtail Millet.png
+    - assets/Gluten Free Brownie.png
+    - assets/MTR Sambar.png
+    - assets/Muesli.png
+    - assets/Organic Chocolate Fruits.png
+    - assets/Organic Vegetable.png
+    - assets/Pasta.png
+    - assets/Pure Quinoa.png
+    - assets/Sour Patch.png
+    - assets/SWAD Veg Biryani.png
+    - assets/farmerdp.png
+    - assets/f.jpeg 
+    - assets/rose.jpeg
+    - assets/almid.jpeg
+    - assets/insectkiller.jpeg

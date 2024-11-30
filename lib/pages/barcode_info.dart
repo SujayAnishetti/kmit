@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'package:nutrition_app/controllers/barcode_info_controller.dart';
+import 'package:nutrition_app/controllers/eatlist_controller.dart'; // Add this import
+import 'package:nutrition_app/pages/eatlist_screen.dart';
 import 'package:nutrition_app/resources/utils.dart';
 
 class BarcodeInfo extends StatelessWidget {
   BarcodeInfo({super.key});
   final controller = Get.put(InfoController());
+  final eatlistController = Get.put(EatlistController()); // Add EatlistController
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +24,6 @@ class BarcodeInfo extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              //mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (controller.product.value.imageUrl?.isNotEmpty ?? false)
@@ -41,7 +43,6 @@ class BarcodeInfo extends StatelessWidget {
                 TextButton(
                     onPressed: () => controller.showNutriments(),
                     child: const Text('Nutritional information')),
-                //Text(controller.product!.value.nutriments.toString()),
                 const SizedBox(height: 12),
                 CircleAvatar(
                   radius: 30,
@@ -56,6 +57,7 @@ class BarcodeInfo extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
+                // Display negative score
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -89,6 +91,7 @@ class BarcodeInfo extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
+                // Display positive score
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -122,7 +125,21 @@ class BarcodeInfo extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
+                // Add to Eatlist button
+                TextButton(
+                    onPressed: () {
+                      eatlistController.addToEatlist(controller.product.value);
+                    },
+                    child: const Text('Add to Eatlist')),
 
+                // Navigate to Eatlist screen
+                TextButton(
+                    onPressed: () {
+                      Get.to(() => EatlistScreen());
+                    },
+                    child: const Text('Eatlist')),
+
+                const SizedBox(height: 12),
                 TextButton(
                     onPressed: () => controller.generateContent(
                         product: controller.product.value),
@@ -131,12 +148,10 @@ class BarcodeInfo extends StatelessWidget {
                     ? const CircularProgressIndicator()
                     : controller.content.value.isEmpty
                         ? const Text('No AI content generated')
-                        :Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(controller.content.value),
-                        ),
-
-                //Text(controller.product!.value.labels),
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(controller.content.value),
+                          ),
               ],
             ),
           ),

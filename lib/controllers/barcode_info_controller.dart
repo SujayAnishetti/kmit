@@ -64,7 +64,7 @@ generateContent(
   //   stopSequences: []
   // );
      final text = await gemini.text(
-      "Give me advantange and disadvantage of this product: ${product.name} ${product.brands}  Barcode: ${barcode}",
+      "Give me a overall score, individual scores for Energy, Saturated fats, Sugars, Sale, Fibre, Fruits,vegetables,legumes on 10 for this product: ${product.name} ${product.brands}  Barcode: ${barcode}",
       // generationConfig: config
     );
     content.value = text!.content?.parts!.map((e) => e.text).join(' ') ?? '';

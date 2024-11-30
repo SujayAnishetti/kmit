@@ -1,26 +1,79 @@
 {
   "project_info": {
-    "project_number": "58211583218",
-    "project_id": "food-scanner-f9169",
-    "storage_bucket": "food-scanner-f9169.appspot.com"
+    "project_number": "693120599844",
+    "project_id": "snist-1ba07",
+    "storage_bucket": "snist-1ba07.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:58211583218:android:5b7fbf52032b6b75767c6b",
+        "mobilesdk_app_id": "1:693120599844:android:87819ed7a0793309d395b1",
         "android_client_info": {
-          "package_name": "com.example.yuka_clone"
+          "package_name": "com.aasharef.grocery"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "693120599844-sodggrlt2tcdtjc5iq961ekuvnlt4gpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyC50caOBNsTj2jMPGWED-mOg8mxtW_O3EY"
+          "current_key": "AIzaSyA_HcVxHvuUMevWBwG8tdvNJfe5mbrTDRQ"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693120599844-sodggrlt2tcdtjc5iq961ekuvnlt4gpc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "693120599844-fl97c1mn2uc5qik5oe7t0jojhk34voc0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.emad.beltaje.getxskeleton.getxSkeleton"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693120599844:android:40724e97ec8cbaffd395b1",
+        "android_client_info": {
+          "package_name": "com.example.yuka_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693120599844-sodggrlt2tcdtjc5iq961ekuvnlt4gpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_HcVxHvuUMevWBwG8tdvNJfe5mbrTDRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693120599844-sodggrlt2tcdtjc5iq961ekuvnlt4gpc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "693120599844-fl97c1mn2uc5qik5oe7t0jojhk34voc0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.emad.beltaje.getxskeleton.getxSkeleton"
+              }
+            }
+          ]
         }
       }
     }
